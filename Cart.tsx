@@ -1,5 +1,5 @@
 import './Cart.css';
-import { useVar, useSet } from 'orbitcode';
+import { useVar } from 'orbitcode';
 
 interface CartItem {
   id: string;
