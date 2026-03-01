@@ -1,13 +1,13 @@
-import './Hero.css';
+import './Hero.css'
 
 interface HeroProps {
-  title?: string;
-  subtitle?: string;
+  title?: string
+  subtitle?: string
 }
 
 function Hero({
   title = 'Welcome to Our Store',
-  subtitle = 'Discover amazing products curated just for you'
+  subtitle = 'Discover amazing products curated just for you',
 }: HeroProps) {
   return (
     <section className="store-hero">
@@ -17,12 +17,12 @@ function Hero({
         <button className="shop-now-btn">Shop Now</button>
       </div>
     </section>
-  );
+  )
 }
 
 // Default export renders component in isolation for preview
 export default function HeroPreview() {
-  return <Hero />;
+  return <Hero />
 }
 
-export { Hero };
+export { Hero }

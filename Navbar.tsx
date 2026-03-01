@@ -1,27 +1,29 @@
-import './Navbar.css';
-import { useVar } from 'orbitcode';
+import './Navbar.css'
+import { useVar } from 'orbitcode'
 
 interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
+  id: string
+  name: string
+  price: number
+  quantity: number
 }
 
 interface NavbarProps {
-  storeName?: string;
+  storeName?: string
 }
 
 function Navbar({ storeName = 'My Store' }: NavbarProps) {
-  const [cartItems] = useVar<CartItem[]>('cartItems', []);
-  const [cartOpen, setCartOpen] = useVar<boolean>('cartOpen', false);
+  const [cartItems] = useVar<CartItem[]>('cartItems', [])
+  const [cartOpen, setCartOpen] = useVar<boolean>('cartOpen', false)
 
-  const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
     <nav className="store-navbar">
       <div className="nav-container">
-        <a href="#" className="store-logo">{storeName}</a>
+        <a href="#" className="store-logo">
+          {storeName}
+        </a>
 
         <div className="nav-links">
           <a href="#products">Products</a>
@@ -32,14 +34,12 @@ function Navbar({ storeName = 'My Store' }: NavbarProps) {
         <button
           className="cart-toggle"
           onClick={() => setCartOpen(!cartOpen)}
-          aria-label="Toggle cart"
-        >
-          🛒
-          {itemCount > 0 && <span className="cart-badge">{itemCount}</span>}
+          aria-label="Toggle cart">
+          🛒{itemCount > 0 && <span className="cart-badge">{itemCount}</span>}
         </button>
       </div>
     </nav>
-  );
+  )
 }
 
 // Default export renders component in isolation for preview
@@ -48,7 +48,7 @@ export default function NavbarPreview() {
     <div className="preview-container">
       <Navbar storeName="Demo Store" />
     </div>
-  );
+  )
 }
 
-export { Navbar };
+export { Navbar }

@@ -1,48 +1,50 @@
-import './Cart.css';
-import { useVar } from 'orbitcode';
+import './Cart.css'
+import { useVar } from 'orbitcode'
 
 interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
+  id: string
+  name: string
+  price: number
+  quantity: number
 }
 
 function Cart() {
-  const [cartOpen, setCartOpen] = useVar<boolean>('cartOpen', false);
-  const [cartItems, setCartItems] = useVar<CartItem[]>('cartItems', []);
+  const [cartOpen, setCartOpen] = useVar<boolean>('cartOpen', false)
+  const [cartItems, setCartItems] = useVar<CartItem[]>('cartItems', [])
 
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   const updateQuantity = (id: string, delta: number) => {
     setCartItems(
       cartItems
-        .map((item) =>
-          item.id === id ? { ...item, quantity: Math.max(0, item.quantity + delta) } : item
+        .map(item =>
+          item.id === id ? { ...item, quantity: Math.max(0, item.quantity + delta) } : item,
         )
-        .filter((item) => item.quantity > 0)
-    );
-  };
+        .filter(item => item.quantity > 0),
+    )
+  }
 
   const removeItem = (id: string) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
+    setCartItems(cartItems.filter(item => item.id !== id))
+  }
 
-  if (!cartOpen) return null;
+  if (!cartOpen) return null
 
   return (
     <div className="cart-overlay" onClick={() => setCartOpen(false)}>
-      <div className="cart-panel" onClick={(e) => e.stopPropagation()}>
+      <div className="cart-panel" onClick={e => e.stopPropagation()}>
         <div className="cart-header">
           <h2>Your Cart</h2>
-          <button className="close-btn" onClick={() => setCartOpen(false)}>×</button>
+          <button className="close-btn" onClick={() => setCartOpen(false)}>
+            ×
+          </button>
         </div>
 
         <div className="cart-items">
           {cartItems.length === 0 ? (
             <p className="empty-cart">Your cart is empty</p>
           ) : (
-            cartItems.map((item) => (
+            cartItems.map(item => (
               <div key={item.id} className="cart-item">
                 <div className="item-info">
                   <h4>{item.name}</h4>
@@ -72,7 +74,7 @@ function Cart() {
         )}
       </div>
     </div>
-  );
+  )
 }
 
 // Default export renders component in isolation for preview
@@ -81,7 +83,7 @@ export default function CartPreview() {
     <div style={{ position: 'relative', height: '400px', background: '#eee' }}>
       <Cart />
     </div>
-  );
+  )
 }
 
-export { Cart };
+export { Cart }

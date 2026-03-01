@@ -1,9 +1,9 @@
-import './App.css';
-import Navbar from './Navbar';
-import Hero from './Hero';
-import Products from './Products';
-import Cart from './Cart';
-import Footer from './Footer';
+import './App.css'
+import Navbar from './Navbar'
+import Hero from './Hero'
+import Products from './Products'
+import Cart from './Cart'
+import Footer from './Footer'
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Cart />
       <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

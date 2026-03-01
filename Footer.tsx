@@ -1,7 +1,7 @@
-import './Footer.css';
+import './Footer.css'
 
 interface FooterProps {
-  storeName?: string;
+  storeName?: string
 }
 
 function Footer({ storeName = 'My Store' }: FooterProps) {
@@ -25,12 +25,12 @@ function Footer({ storeName = 'My Store' }: FooterProps) {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
 // Default export renders component in isolation for preview
 export default function FooterPreview() {
-  return <Footer storeName="Demo Store" />;
+  return <Footer storeName="Demo Store" />
 }
 
-export { Footer };
+export { Footer }
